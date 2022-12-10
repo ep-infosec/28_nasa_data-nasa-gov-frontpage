@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]><html class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="en"><!--<![endif]-->
+  <head>
+    <!-- Basic Page Needs
+================================================== -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Specific Metas
+================================================== -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Title and meta description
+================================================== -->
+<title>NASA Open Data Portal</title>
+<meta property="og:title" content="NASA | Open Data | NASA Open Data Portal">
+
+
+<meta name="description" content="Design and build fast, accessible, mobile-friendly NASA websites backed by user research.">
+<meta property="og:description" content="Design and build fast, accessible, mobile-friendly NASA websites backed by user research.">
+
+<meta name="twitter:card" value="summary">
+<meta name="twitter:site" content="@USWDS">
+<meta property="og:type" content="article">
+
+<!-- Favicons
+================================================== -->
+  <!-- 128x128 -->
+  <link rel="shortcut icon" type="image/ico" href="nasawds-2.0.7/img/favicons/favicon.ico">
+  <link rel="icon" type="image/png" href="nasawds-2.0.7/img/favicons/favicon.png">
+
+  <!-- 192x192, as recommended for Android
+  http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android
+  -->
+  <link rel="icon" type="image/png" sizes="192x192" href="nasawds-2.0.7/img/favicons/favicon-192.png">
+
+  <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+  <link rel="apple-touch-icon-precomposed" href="nasawds-2.0.7/img/favicons/favicon-57.png">
+  <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="nasawds-2.0.7/img/favicons/favicon-72.png">
+  <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="nasawds-2.0.7/img/favicons/favicon-114.png">
+  <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="nasawds-2.0.7/img/favicons/favicon-144.png">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="nasawds-2.0.7/css/nasawds.min.css">
+<link rel="stylesheet" href="non-nasawds-assets/css/sticky.css">
+
+  
+    
+
+<script async type="text/javascript" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA" id="_fed_an_ua_tag"></script>
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(){
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    console.log(modal);
+    // Get the button that opens the modal
+    var btn = document.getElementById("signinButton");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+      document.getElementById('contSignIn').focus();
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+  span.addEventListener('keydown', spanFunct);
+  document.getElementById("contSignIn").addEventListener('keydown', spanFunct);
+    function spanFunct(e) {
+      if(document.activeElement.id != "contSignIn"){
+        if (e.keyCode == 13 || (e.keyCode === 9 && e.shiftKey)){
+          console.log(document.activeElement.id);
+          modal.style.display = "none";
+          btn.focus();
+        }
+      }
+      else{
+        if (e.keyCode === 9 && !e.shiftKey){
+          modal.style.display = "none";
+          btn.focus();
+        }
+      }
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    });
+    function exitModal(e){
+      console.log(this);
+      if(e.shiftKey){
+        document.getElementById("myModal").style.display = "none";
+      }
+    }
+</script>
+	  
+  </head>
+<body class="page-landing-page layout-demo ">
+<script src="nasawds-2.0.7/js/nasawds.min.js"></script>
+<script src="non-nasawds-assets/js/gui.js"></script>
+<script src="non-nasawds-assets/js/jquery.min.js"></script>
+<script src="non-nasawds-assets/footer/OIT-footer.js"></script>
+  
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" tabindex="0">&times;</span>
+    <h2 style="margin-top: .5em">Important</h2>
+    <p>If you are a <strong>NASA employee</strong> and would like to upload new datasets, please send us an email at <a href="mailto:nasa-data@lists.arc.nasa.gov">nasa-data@lists.arc.nasa.gov</a> requesting a "Publisher" account. For more information on uploading data, you can visit our <a href="https://developer.nasa.gov/OpenInnovation/data-nasa-gov-instructions" id = "SignInRM" >README</a> (this link will only work if you are connected to the NASA network)</p>
+    <button onclick="window.location.href = 'https://data.nasa.gov/login';" id= "contSignIn">Continue to Sign-In</button>
+  </div>
+
+</div>
+
+<section class="usa-banner">
+  <div class="usa-accordion">
+    <header class="usa-banner-header">
+      <div class="usa-grid usa-banner-inner">
+      <img src="nasawds-2.0.7/img/favicons/favicon-usa-57.png" alt="U.S. flag">
+      <p>An official website of the United States government</p>
+      <button class="usa-accordion-button usa-banner-button"
+        aria-expanded="false" aria-controls="gov-banner">
+        <span class="usa-banner-button-text">Here's how you know</span>
+      </button>
+      </div>
+    </header>
+    <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
+      <div class="usa-banner-guidance-gov usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="nasawds-2.0.7/img/icon-dot-gov.svg" alt="Dot gov">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The .gov means it’s official.</strong>
+            <br>
+            Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site.
+          </p>
+        </div>
+      </div>
+      <div class="usa-banner-guidance-ssl usa-width-one-half">
+        <img class="usa-banner-icon usa-media_block-img" src="nasawds-2.0.7/img/icon-https.svg" alt="Https">
+        <div class="usa-media_block-body">
+          <p>
+            <strong>The site is secure.</strong>
+            <br>
+            The <strong>https://</strong> ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<header class="usa-header-dark usa-header-extended" role="banner" id="myHeader">
+
+  <div class="usa-navbar">
+    <div class="usa-logo" id="extended-logo">
+    <em class="usa-logo-text" style = "height: 40px;">
+        <a  title="Home" href = "https://www.nasa.gov" style = "position: absolute; height: 40px;">
+          <img src="nasawds-2.0.7/img/favicons/favicon-192.png" alt="NASA logo but image did not load" class="usa-logo-img"> 
+        </a>
+        <a href="https://data.nasa.gov"
+          title="Home"
+          aria-label="Home" style="color: #9bdaf1; position: absolute; margin-left: 50px; padding-top: 5px;">
+            DATA.NASA.GOV
+        </a>
+      </em>
+    </div>
+    <button class="usa-menu-btn">...</button>
+  </div>
+  <nav role="navigation" class="usa-nav">
+      <button class="usa-nav-close">
+          <img src="nasawds-2.0.7/img/close.svg" alt="close">
+        </button>
+      <div class="usa-nav-secondary">
+          <ul class="usa-unstyled-list usa-nav-secondary-links" style="padding: 0 1.5rem 0 1.8rem;">
+            <li>
+              <a href="#aboutInfo">
+                About
+              </a>
+            </li>
+            <li>
+              <a href="https://data.nasa.gov/stories/s/gk8h-th3y">Developers</a>
+            </li>
+            <li>
+              <!-- Trigger/Open The Sign In Modal -->
+              <a href="#" id="signinButton">Sign-In</a>
+            </li>
+          </ul>
+        </div>
+      <div class="usa-nav-inner">
+        <ul class="usa-nav-primary usa-accordion">
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-one" onfocusin = "new function(){closeSubMenu('extended-nav-section-two')}">
+              <span>Open-Innovation Sites</span>
+            </button>
+            <ul id="extended-nav-section-one" class="usa-nav-submenu" style="text-align:left; width: 202.23px" >
+              <!-- <li>
+                <a href="https://open.nasa.gov">Open.nasa.gov <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li> -->
+              <li>
+                <a href="https://api.nasa.gov">API.nasa.gov <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li>
+              <li>
+                <a href="https://code.nasa.gov">Code.nasa.gov <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li>
+              <!-- <li>
+                <a href="https://open.nasa.gov/explore/datanauts/" onfocusout = "new function(){closeSubMenu('extended-nav-section-one')}" >Datanauts <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li> -->
+            </ul>
+          </li>
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-two" onfocusin = "new function(){closeSubMenu('extended-nav-section-three')}">
+              <span>NASA Science Archives</span>
+            </button>
+              <ul id="extended-nav-section-two" class="usa-nav-submenu" style="text-align:left; width: 202.83px">
+                  <li>
+                      <a href="https://www.nasa.gov/open/data.html">List of Science & Mission Data Archives <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  <li>
+                      <a href="https://pds.nasa.gov">PDS <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  <li>
+                      <a href="https://earthdata.nasa.gov" onfocusout = "new function(){closeSubMenu('extended-nav-section-two')}" >EOSDIS <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  
+              </ul>
+          </li>
+          <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-three" onfocusin = "new function(){closeSubMenu('extended-nav-section-three')}">
+              <span>Technical Report Server</span>
+            </button>
+              <ul id="extended-nav-section-three" class="usa-nav-submenu" style="text-align:left; width: 212.83px">
+                <li>
+                    <a href="https://ntrs.nasa.gov/search">Public Search<img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  <li>
+                    <a href="https://ntrs.nasa.gov/">NASA Internal Search<img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  <li>
+                    <a href="https://sti.nasa.gov/what-is-the-ntrs/" onfocusout = "new function(){closeSubMenu('extended-nav-section-three')}">About <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+                  </li>
+                  
+              </ul>
+          </li>
+          <!-- <li>
+            <button class="usa-accordion-button usa-nav-link" aria-expanded="false" aria-controls="extended-nav-section-four">
+              <span>Code & Data from All Fed Agencies</span>
+            </button>
+            <ul id="extended-nav-section-four" class="usa-nav-submenu" style="text-align:left; width: 283.33px">
+              <li>
+                <a href="https://code.gov">Code.gov <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li>
+              <li>
+                <a href="https://data.gov" onfocusout = "new function(){closeSubMenu('extended-nav-section-three')}">Data.gov <img src="nasawds-2.0.7/img/external-link-alt-hover.png" alt="Exterrnal Link" class = "linkImg"></a>
+              </li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+</header>
+
+<div class="usa-overlay"></div>
+
+<main id="main-content">
+  <section class="usa-hero">
+  <div class="usa-grid spacer">
+    <div class="usa-width-one-third">
+      <div class="usa-hero-callout usa-section-dark">
+          <h2 style = "font-size: 3rem">
+            Want NASA data?
+        </h2>
+        <p><br>Check out our data catalog below or you can read about other open-government websites further down the page.</p>
+        <a class="usa-button" href="https://data.nasa.gov/browse">Go to the DATA CATALOG</a>
+      </div>
+    </div>
+    <div class="usa-width-one-third" id="filler">
+      <div class="usa-hero-callout usa-section-dark" style="visibility: hidden"></div>
+    </div>
+    <div class="usa-width-one-third">
+      <div class="usa-hero-callout usa-section-dark">
+          <h2 style = "font-size: 3rem">
+            Know what you are looking for?
+        </h2>
+        <p><br>Search for it in our catalog of tens of thousand datasets released to the public! </p>
+        <div role="search">
+          <form class="usa-search usa-search-small" action="https://data.nasa.gov/browse">
+            <label class="usa-sr-only" for="search-field-small">Search small</label>
+            <input id="search-field-small" type="search" name="q" style = "z-index: 3000">
+            <button type="submit">
+              <span class="usa-sr-only">Search</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="usa-section-dark" id="aboutInfo">
+  <section class="usa-grid usa-section ">
+    <div class="usa-width-one-third">
+      <h2>DATA.NASA.GOV: A catalog of publicly available NASA datasets</h2>
+    </div>
+    <div class="usa-width-two-thirds">
+      <p>DATA.NASA.GOV is NASA's clearinghouse site for open-data provided to the public. </p>
+      <p>Tens of thousands of datasets are available for you.</p>
+      <p> The majority of dataset pages on data.nasa.gov only hold metadata for each dataset. It is common for the actual data to be held on other NASA archive sites. Data.nasa.gov will have the metadata and links to the data as it exists in those many other locations.</p>
+      <p>Some datasets on data.nasa.gov are harvested from other NASA data archives and other datasets only exist on data.nasa.gov. <a href="https://docs.google.com/presentation/d/10xoC0N1jWOxEFwGml-Ivnn6GYxJ2_tbAZjdl7aRzaI8/edit?usp=sharing">This slideshow</a> created for SpaceApps Hackathon participants explains the wider NASA data universe and has some suggestions for finding NASA data.</p>
+      <h3>Do You Want to Upload New NASA Datasets?</h3>
+	    <p>If you are a NASA individual and would like to upload new datasets, either manually via a webform or programmatically via API, please check out <a href="https://developer.nasa.gov/OpenInnovation/data-nasa-gov-instructions/blob/master/README.md">these instructions</a>. Note: You'll need to be behind the NASA firewall to access that link. If you sign-up without following those instructions, you won't be able to add new datasets.</p>
+	    <button><a href="https://data.nasa.gov/login">SIGN-IN</a></button>
+<!--       <p>If you are a NASA staff or contractor and have a public dataset that you would like to upload or link to data.nasa.gov through metadata, please <a href="mailto:nasa-data@lists.arc.nasa.gov">contact us</a> to set up an account via your nasa.gov email. After you have an account, you can sign-in via the sign-in button at the top of this page and upload or edit your dataset as the dataset owner. <i>NOTE: If you create an account yourself, you'll be able to see some information but not be able to upload datasets.</i></p> -->
+    </div>
+  </section>
+</section>
+
+  
+  <section class="usa-section">
+    <section class="usa-grid">
+      <div class="usa-width-one-third">
+        <h2>What type of data is available on Data.nasa.gov?</h2>
+      </div>
+      <div class="usa-width-two-thirds">
+        <h3>There are thousands of public datasets on data.nasa.gov.</h3>
+        <p>
+          To give the public a better understanding of the different types of datasets available, 
+          a data visualization page has been created entirely dedicated to 
+          helping our users gain a better understanding as to what kind of data they can expect to find.
+        </p>
+        <img src="nasawds-2.0.7/img/treemap.png" alt="">
+        <!-- href added via JS -->
+        <!-- <a class="usa-button usa-button-big" id="vis-link">Take me to the visualization page</a> -->
+        <a class="usa-button usa-button-small"  href="data_visualizations.html">Take me to the visualization page</a>
+      </div>      
+    </section>
+  </section>
+
+  <section class="usa-section  usa-section-dark">
+    <section class="usa-grid">
+      <div class="usa-width-one-third">
+        <h2>Open Dataset Resourses Tied to Data.nasa.gov</h2>
+      </div>
+      <div class="usa-width-two-thirds">
+        <h3>NASA datasets are available through a number of different websites, not just data.nasa.gov.</h3>
+        <h4>Open-Innovation Program</h4>
+        <p> Data.nasa.gov is the dataset-focused site of NASA's OCIO (Office of the Chief Information Officer) open-innovation program. There are also API.nasa.gov and Code.nasa.gov for APIs and Code respectively.</p>
+  
+      </div>
+    </section>
+  </section>
+
+  <section class="usa-section usa-graphic_list">
+    <div class="usa-grid" style="margin-bottom:2em;text-align: center">
+        <h2>Open Innovation Sites</h2>
+    </div>
+    <div class="usa-grid usa-graphic_list-row">
+        
+      <div class="usa-width-one-half usa-media_block">
+        <img class="usa-media_block-img"  src="./non-nasawds-assets/img/code.nasa.png" style = "filter: brightness(170%)" alt="Alt text">
+        <div class="usa-media_block-body">
+          <h3 style= "padding-top: 5px; padding-left: 5px;"><a href="https://code.nasa.gov" class = "OISite">code.nasa.gov</a></h3>
+          <p>A page that contains information on links to all open-sourced NASA code projects.</p>
+        </div>
+      </div>
+      <div class="usa-width-one-half usa-media_block">
+      
+        <img class="usa-media_block-img"  src="./non-nasawds-assets/img/api.nasa.png" style = "filter: brightness(130%)" alt="Alt text">
+        <div class="usa-media_block-body">
+          <h3 style= "padding-top: 5px; padding-left: 5px;"><a href="https://api.nasa.gov" class = "OISite">api.nasa.gov</a></h3>
+          <p>A clearinghouse site for information about NASA APIs. Acts a passthrough site to NASA APIs elsewhere. Request a key and get to work!</p>
+        </div>
+      </div>
+    </div>
+    <div class="usa-grid usa-graphic_list-row">
+      <!-- <div class="usa-width-one-half usa-media_block">
+        <img class="usa-media_block-img"  src="./non-nasawds-assets/img/open.nasa.png" style = "filter: brightness(500%)" alt="Alt text">
+        <div class="usa-media_block-body">
+          <h3 style= "padding-top: 5px; padding-left: 5px;"><a href="https://open.nasa.gov" class = "OISite">open.nasa.gov</a></h3>
+          <p>More information about all open-innovation sites like code.nasa.gov and data.nasa.gov. Information about datanauts, a problem that lets the public collaborate with nasa. Information about federal open-data mandates that apply to NASA.</p>
+        </div>
+      </div> -->
+      <div class="usa-width-one-half usa-media_block">
+        <img class="usa-media_block-img"  src="./non-nasawds-assets/img/data.nasa.png" style = "filter: brightness(130%)" alt="Alt text">
+        <div class="usa-media_block-body">
+          <h3 style= "padding-top: 5px; padding-left: 5px;"><a href="https://data.nasa.gov" class = "OISite">data.nasa.gov (this site)</a></h3>
+          <p>NASA's central open-data site for the public. Aggregates data from different archives and datasets not available anywhere else. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="usa-section usa-section-dark ">
+    <div class="usa-grid">
+      <div class="usa-width-one-third">
+        <h2>Other NASA Data Sites and Science Archives</h2>
+      </div>
+      <div class = "usa-width-two-thirds">
+        <p>Additionally, NASA has a number of data archives, often geared around providing the public with datasets from a particular domain, field of science, or mission.  </p>
+        <h3><a href="https://www.nasa.gov/open/data.html">nasa.gov/open/data</a> has a good overview of all the various science and mission data sites.</h3>
+        <h4>A few key links:</h4>
+        <ol>
+            <li>
+              <a href="https://pds.nasa.gov">Planetary Data System (PDS)</a>
+            </li>
+            <li>
+              <a href="https://earthdata.nasa.gov">Earth Observing System Data and Information System (EOSDIS)</a>
+          </li>
+          <li>
+              <a href="https://www.nasa.gov/open/data.html">List of Other NASA Science & Mission Data Archives</a>
+          </li>
+        </ol>
+        <!-- <a class="usa-button usa-button-small" onclick = "window.location = 'mailto:nasa-data@lists.arc.nasa.gov'" onkeypress = "window.location = 'mailto:nasa-data@lists.arc.nasa.gov'" tabindex = "0" title="If this button doesn't open your email application, it is due to your browser settings. Instead use your normal email workflow to contact nasa-data@lists.arc.nasa.gov.">Submit an issue if you know of another NASA data site that should be included!</a> -->
+        <a id="submit_issue" class="usa-button usa-button-small" onclick="window.location='mailto:nasa-data@lists.arc.nasa.gov'" onkeypress="window.location = 'mailto:nasa-data@lists.arc.nasa.gov'" tabindex="0" onmouseover="mouseOverIssue()" onmouseout="mouseOutIssue()">Please contact us if you know of another NASA data site that should be included!</a>
+      </div>
+    </div>
+    <br><br>
+    <div class="usa-grid">
+        <div class="usa-width-one-third">
+          <h2>NASA Tecnical Reports Server</h2>
+        </div>
+        <div class = "usa-width-two-thirds">
+          <p>You might also be interested in NASA technical reports, publications, or presentations. These are found on NASA Technical Reports Server or NRTS, which is run by NASA's <a href="https://sti.nasa.gov/">STI (Science & Technical Information) Program</a>. </p>
+          <h4>A few key links:</h4>
+          <ol>
+              <li>
+                <a href="https://sti.nasa.gov/">STI homepage</a>
+              </li>
+              <li>
+                <a href="https://ntrs.nasa.gov/">NRTS Search Page</a>
+            </li>
+            <li>
+                <a href="https://sti.nasa.gov/what-is-the-ntrs/">An "About" page that covers what type of content is covered by NRTS</a>
+            </li>
+          </ol>
+       
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="usa-grid">
+          <div class="usa-width-one-third">
+            <h2>Code and data from all US federal agencies</h2>
+          </div>
+          <div class = "usa-width-two-thirds">
+            <p>Code.gov and data.gov are aggregator sites run by GSA (General Services Administration) that collect open-data and open-code from across all U.S. federal government agencies. Code.nasa.gov and data.nasa.gov feed into code.gov and data.gov respectively. Data.gov has an APIs for working with their datasets that make them worth checking out even if you're strickly interested in NASA data.</p>
+            <h4>A few key links:</h4>
+            <ol>
+                <li>
+                  <a href="https://code.gov">Code.gov</a>
+                </li>
+                <li>
+                  <a href="https://data.gov">Data.gov</a>
+              </li>
+            </ol>
+         
+          </div>
+        </div>
+  </section>
+
+</main>
+<script>
+
+  var h = $("#myHeader");
+  h.addClass("sticky");
+  insertFooterHere("main-content");
+
+  // Creating link to data vis page
+  var getUrl = window.location;
+  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+  if (baseUrl.search("127.0.0.1") !== -1) {
+    $("#vis-link").attr("href", `/data_visualizations.html`);
+  } else {
+    $("#vis-link").attr("href", `${baseUrl}/data_visualizations.html`);  
+  }
+  
+  // removes space between the first 2 blocks
+  var isThirds = true;
+  if($(window).width() < 951 && isThirds == true){
+      isThirds = false;
+      var fill = $("#filler");
+      var firstDiv = fill.prev();
+      var lastDiv = fill.next();
+      firstDiv.removeClass("usa-width-one-third").addClass("usa-width-one-half");
+      lastDiv.removeClass("usa-width-one-third").addClass("usa-width-one-half");
+      fill.remove();
+    }
+  $(window).resize(function(){
+    if($(this).width() >= 951 && isThirds == false){
+        isThirds = true;
+        var fill = $('<div class="usa-width-one-third" id="filler"><div class="usa-hero-callout usa-section-dark" style="visibility: hidden"></div></div>');
+        var firstDiv = $($(".usa-width-one-half")[2]);
+        var lastDiv = $($(".usa-width-one-half")[3]);
+        firstDiv.removeClass("usa-width-one-half").addClass("usa-width-one-third");
+        lastDiv.removeClass("usa-width-one-half").addClass("usa-width-one-third");
+        fill.insertBefore(lastDiv);
+    }
+    if($(this).width() < 951 && isThirds == true){
+      isThirds = false;
+      var fill = $("#filler");
+      var firstDiv = fill.prev();
+      var lastDiv = fill.next();
+      firstDiv.removeClass("usa-width-one-third").addClass("usa-width-one-half");
+      lastDiv.removeClass("usa-width-one-third").addClass("usa-width-one-half");
+      fill.remove();
+    }
+})
+</script>
+<script>
+    function mouseOverIssue() {
+        document.getElementById("submit_issue").innerHTML = "If your browser supports it, clicking will email nasa-data@lists.arc.nasa.gov.";
+    }
+    
+    function mouseOutIssue() {
+      
+      document.getElementById("submit_issue").innerHTML = "Please contact us if you know of another NASA data site that should be included!";
+      
+    }
+    </script>
+
+    <script>
+
+        
+        if(window.location.href == "https://nasa.github.io/data-nasa-gov-frontpage"){
+            window.location.replace("https://data.nasa.gov");
+        }
+        else if(window.location.href == "https://nasa.github.io/data-nasa-gov-frontpage/"){
+            window.location.replace("https://data.nasa.gov");
+        }
+        else if(window.location.href == "https://nasa.github.io/data-nasa-gov-frontpage/index.html"){
+            window.location.replace("https://data.nasa.gov");
+        }
+        else if(window.location.href == "https://nasa.github.io/data-nasa-gov-frontpage/data_visualizations.html"){
+            window.location.replace("https://data.nasa.gov");
+        }
+
+        // if(window.location.href == "http://localhost:8081/"){
+        //     window.location.replace("https://data.nasa.gov");
+        // }
+
+        // console.log("window.location = ", window.location)
+        
+        </script>      
+        
+  </body>
+
+
+</html>
